@@ -3,6 +3,7 @@ import { SkynetClient } from 'skynet-js';
 
 // To import DAC, uncomment here, and 2 spots below.
 // import { ContentRecordDAC } from '@skynetlabs/content-record-library';
+import { UserProfileDAC } from '@skynethub/userprofile-library';
 
 const SkynetContext = createContext(undefined);
 
@@ -17,6 +18,7 @@ const client = new SkynetClient(portal);
 // For now, we won't use any DACs -- uncomment to create
 // const contentRecord = new ContentRecordDAC();
 const contentRecord = null;
+const userProfile = new UserProfileDAC();
 
 const dataDomain =
   window.location.hostname === 'localhost' ? 'localhost' : 'appName.hns';
@@ -26,6 +28,8 @@ const SkynetProvider = ({ children }) => {
     client,
     mySky: null,
     contentRecord,
+    userProfile,
+    dataDomain,
   });
 
   useEffect(() => {
@@ -36,11 +40,13 @@ const SkynetProvider = ({ children }) => {
         // needed for permissions write
         const mySky = await client.loadMySky(dataDomain, {
           debug: true,
+          dev: true,
         });
 
         // load necessary DACs and permissions
         // Uncomment line below to load DACs
         // await mySky.loadDacs(contentRecord);
+        await mySky.loadDacs(userProfile);
 
         // replace mySky in state object
         setSkynetState({ ...skynetState, mySky });

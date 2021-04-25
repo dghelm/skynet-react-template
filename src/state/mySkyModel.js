@@ -56,4 +56,20 @@ export const mySkyModel = {
       }
     }
   ),
+  persistHNSEntriesState: thunkOn(
+    (actions, storeActions) => [
+      storeActions.hns.addEntry,
+      storeActions.hns.updateEntry,
+      storeActions.hns.deleteEntry,
+    ],
+    async (actions, target, { getStoreState }) => {
+      const hnsEntries = getStoreState().hns.hnsEntries;
+      const mySky = getStoreState().mySky.mySky;
+
+      if (mySky) {
+        console.log('persisting HNS entries to MySky');
+        await mySky.setJSON('localhost/hnsEntries.json', { hnsEntries });
+      }
+    }
+  ),
 };
