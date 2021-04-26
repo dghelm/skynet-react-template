@@ -13,12 +13,12 @@ import { useStoreState, useStoreActions } from 'easy-peasy';
 import { useState, useEffect } from 'react';
 
 const MessageList = ({ messages, dismissMessage }) => {
-  const messageItems = messages.map(({ message, negative, dismissed }, i) => {
+  const messageItems = messages.map(({ message, negative, dismissed, id }) => {
     return (
-      <div key={i}>
+      <div key={id}>
         <Transition animation="fade up" duration={500} visible={!dismissed}>
           <Message
-            onDismiss={(i) => dismissMessage(i)}
+            onDismiss={(i) => dismissMessage({ id })}
             floating
             negative={negative}
           >
