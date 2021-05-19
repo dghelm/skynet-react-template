@@ -1,4 +1,5 @@
 import { action, thunk, thunkOn, computed } from 'easy-peasy';
+import { dataDomain } from './SkynetContext';
 
 export const mySkyModel = {
   // MySky State
@@ -52,7 +53,7 @@ export const mySkyModel = {
 
       if (mySky) {
         console.log('persisting to MySky');
-        await mySky.setJSON('localhost/todos', { todos });
+        await mySky.setJSON(dataDomain + '/todos', { todos });
       }
     }
   ),
@@ -68,7 +69,7 @@ export const mySkyModel = {
 
       if (mySky) {
         console.log('persisting HNS entries to MySky');
-        await mySky.setJSON('localhost/hnsEntries.json', { hnsEntries });
+        await mySky.setJSON(dataDomain + '/hnsEntries.json', { hnsEntries });
       }
     }
   ),

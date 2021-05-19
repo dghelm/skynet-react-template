@@ -56,7 +56,14 @@ const createUploadErrorMessage = (error) => {
   return `Critical error, please refresh the application and try again. ${error.message}`;
 };
 
-const UploadElement = ({ file, status, error, url = '', progress = 0 }) => {
+const UploadElement = ({
+  file,
+  status,
+  error,
+  url = '',
+  skylink = '',
+  progress = 0,
+}) => {
   return (
     <Segment>
       <div className="flex items-center">
@@ -78,7 +85,13 @@ const UploadElement = ({ file, status, error, url = '', progress = 0 }) => {
                 <span className="text-palette-300">Processing...</span>
               )}
 
-              {status === 'complete' && <a href={url}>{url}</a>}
+              {status === 'complete' && (
+                <span>
+                  <a href={url}>{url}</a>
+                  <br />
+                  {skylink}
+                </span>
+              )}
 
               {status === 'error' && error && (
                 <span className="text-error">{error}</span>
@@ -184,7 +197,11 @@ const Uploader = ({ uploadMode }) => {
             subdomain: mode === 'directory',
           });
 
-          onFileStateChange(file, { status: 'complete', url });
+          onFileStateChange(file, {
+            status: 'complete',
+            url,
+            skylink: response.skylink,
+          });
         } catch (error) {
           if (
             error.response &&

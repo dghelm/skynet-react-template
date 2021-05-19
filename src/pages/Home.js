@@ -5,7 +5,7 @@ const HomepageHeading = ({ mobile }) => (
   <Container text>
     <Header
       as="h1"
-      content="Imagine a Template"
+      content="SkyDeploy"
       inverted
       style={{
         fontSize: mobile ? '2em' : '4em',
@@ -16,7 +16,7 @@ const HomepageHeading = ({ mobile }) => (
     />
     <Header
       as="h2"
-      content="That solved your todo list needs."
+      content="Simple Deploy Skapp from Skynet React Template"
       inverted
       style={{
         fontSize: mobile ? '1.5em' : '1.7em',
@@ -25,7 +25,7 @@ const HomepageHeading = ({ mobile }) => (
         marginBottom: mobile ? '0.5em' : '1.5em',
       }}
     />
-    <Button color="green" size="huge" as={NavLink} to="todo">
+    <Button color="green" size="huge" as={NavLink} to="deploy">
       Get Started
       <Icon name="right arrow" />
     </Button>

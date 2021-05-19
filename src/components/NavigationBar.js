@@ -21,14 +21,14 @@ const NavigationBar = () => {
         <Container>
           <Menu.Item header>
             <Icon circular inverted color="teal" name="gem" />
-            Very Cool Skapp
+            SkyDeploy (ALPHA)
           </Menu.Item>
           <NavMenuItem
             title="Home"
             route="home"
             currentRoute={location.pathname}
           />
-          <NavMenuItem
+          {/* <NavMenuItem
             title="Todo"
             route="todo"
             currentRoute={location.pathname}
@@ -47,24 +47,24 @@ const NavigationBar = () => {
             title="Recently Played"
             route="recently-played"
             currentRoute={location.pathname}
-          />
+          /> */}
           <NavMenuItem
             title="Deploy"
             route="deploy"
             currentRoute={location.pathname}
           />
-          <NavMenuItem
+          {/* <NavMenuItem
             title="Profile"
             route="profile"
             currentRoute={location.pathname}
-          />
+          /> */}
           <Menu.Menu position="right">
             <Menu.Item>
               <MySkyButton />
             </Menu.Item>
           </Menu.Menu>
         </Container>
-        <MessageDisplay />
+        {/* <MessageDisplay /> */}
       </Menu>
     </Container>
   );
