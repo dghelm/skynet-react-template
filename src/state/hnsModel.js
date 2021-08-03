@@ -1,5 +1,6 @@
 import { action, thunk, thunkOn } from 'easy-peasy';
 import { parseSkylink } from 'skynet-js';
+import { dataDomain } from './SkynetContext';
 
 export const hnsModel = {
   // Todo State
@@ -48,8 +49,18 @@ export const hnsModel = {
         });
         return;
       }
+      const path = dataDomain + '/sites/' + filteredHNS;
 
-      const entryLink = 'v2 Skylink soon';
+      const v2 = await mySky.getEntryLink(path);
+      const pathUrl = await client.getSkylinkUrl(v2, { subdomain: true });
+      console.log('v2', v2, pathUrl);
+
+      // await mySky.setJSON(path, { test: true });
+      // console.log('wrote', path, 'test');
+      await mySky.setDataLink(path, dataLink);
+      console.log('wrote', path, dataLink);
+
+      const entryLink = v2;
 
       actions.addEntry({
         hnsName: filteredHNS,
@@ -67,11 +78,13 @@ export const hnsModel = {
       if (target.payload.userID) {
         actions.setLoading({ isLoading: true });
         const mySky = target.payload.mySky;
-        const { data } = await mySky.getJSON('localhost/hnsEntries.json');
+        const { data } = await mySky.getJSON(dataDomain + '/hnsEntries.json');
         if (data) {
           actions.loadEntries({ hnsEntries: data.hnsEntries });
         } else {
-          await mySky.setJSON('localhost/hnsEntries.json', { hnsEntries: [] });
+          await mySky.setJSON(dataDomain + '/hnsEntries.json', {
+            hnsEntries: [],
+          });
         }
         actions.setLoading({ isLoading: false });
       }

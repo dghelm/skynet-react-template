@@ -20,8 +20,8 @@ const client = new SkynetClient(portal);
 const contentRecord = null;
 const userProfile = new UserProfileDAC();
 
-const dataDomain =
-  window.location.hostname === 'localhost' ? 'localhost' : 'appName.hns';
+const dataDomain = 'sky-deploy.hns';
+// window.location.hostname === 'localhost' ? 'localhost' : 'appName.hns';
 
 const SkynetProvider = ({ children }) => {
   const [skynetState, setSkynetState] = useState({
@@ -39,7 +39,8 @@ const SkynetProvider = ({ children }) => {
         // load invisible iframe and define app's data domain
         // needed for permissions write
         const mySky = await client.loadMySky(dataDomain, {
-          debug: true,
+          // debug: true,
+          // alpha: true,
           // dev: true,
         });
 
@@ -74,4 +75,4 @@ const SkynetProvider = ({ children }) => {
   );
 };
 
-export { SkynetContext, SkynetProvider };
+export { SkynetContext, SkynetProvider, client, dataDomain };

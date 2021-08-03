@@ -22,7 +22,7 @@ const App = () => {
         <Router>
           <NavigationBar />
           <Container>
-            <MessageDisplay />
+            {/* <MessageDisplay /> */}
             <Switch>
               <Route path="/todo">
                 <Todo />
