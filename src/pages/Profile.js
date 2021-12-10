@@ -1,7 +1,7 @@
-import { useContext, useState, useEffect } from 'react';
-import { Header, Container } from 'semantic-ui-react';
-import { SkynetContext } from '../state/SkynetContext';
-import { useStoreState } from 'easy-peasy';
+import { useContext, useState, useEffect } from "react";
+import { Header, Container } from "semantic-ui-react";
+import { SkynetContext } from "../state/SkynetContext";
+import { useStoreState } from "easy-peasy";
 
 const Profile = () => {
   const { userProfile } = useContext(SkynetContext);
@@ -9,16 +9,16 @@ const Profile = () => {
   const [profile, setProfile] = useState(null);
 
   useEffect(() => {
-    console.log('start userprofile');
+    console.log("start userprofile");
     userProfile.getProfile(userID).then((profile) => {
       setProfile(profile);
 
       console.log(profile);
-      console.log('end userprofile');
+      console.log("end userprofile");
     });
 
     userProfile.getPreferences(userID).then((prefs) => {
-      console.log('prefs:', prefs);
+      console.log("prefs:", prefs);
     });
 
     // userProfile
@@ -35,7 +35,7 @@ const Profile = () => {
 
   return (
     <>
-      <Container text style={{ marginTop: '7em' }}>
+      <Container text style={{ marginTop: "7em" }}>
         <Header as="h2">Profile</Header>
         <Header as="h3">getProfile</Header>
       </Container>

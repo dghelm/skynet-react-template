@@ -1,5 +1,5 @@
-import { action, thunk, thunkOn } from 'easy-peasy';
-import { parseSkylink } from 'skynet-js';
+import { action, thunk, thunkOn } from "easy-peasy";
+import { parseSkylink } from "skynet-js";
 
 export const hnsModel = {
   // Todo State
@@ -43,13 +43,13 @@ export const hnsModel = {
       let filteredDataLink = parseSkylink(dataLink);
       if (!filteredDataLink) {
         throwError({
-          action: 'createEntry',
-          message: 'Unable to parse provided Skylink',
+          action: "createEntry",
+          message: "Unable to parse provided Skylink",
         });
         return;
       }
 
-      const entryLink = 'v2 Skylink soon';
+      const entryLink = "v2 Skylink soon";
 
       actions.addEntry({
         hnsName: filteredHNS,
@@ -67,11 +67,11 @@ export const hnsModel = {
       if (target.payload.userID) {
         actions.setLoading({ isLoading: true });
         const mySky = target.payload.mySky;
-        const { data } = await mySky.getJSON('localhost/hnsEntries.json');
+        const { data } = await mySky.getJSON("localhost/hnsEntries.json");
         if (data) {
           actions.loadEntries({ hnsEntries: data.hnsEntries });
         } else {
-          await mySky.setJSON('localhost/hnsEntries.json', { hnsEntries: [] });
+          await mySky.setJSON("localhost/hnsEntries.json", { hnsEntries: [] });
         }
         actions.setLoading({ isLoading: false });
       }

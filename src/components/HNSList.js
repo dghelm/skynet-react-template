@@ -1,5 +1,5 @@
-import { Table, Checkbox, List, Button, Loader, Icon } from 'semantic-ui-react';
-import { useStoreState, useStoreActions } from 'easy-peasy';
+import { Table, Checkbox, List, Button, Loader, Icon } from "semantic-ui-react";
+import { useStoreState, useStoreActions } from "easy-peasy";
 
 const HNSList = () => {
   const hnsEntries = useStoreState((state) => state.hns.hnsEntries);

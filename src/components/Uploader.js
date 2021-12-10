@@ -1,11 +1,11 @@
-import bytes from 'bytes';
-import { getReasonPhrase, StatusCodes } from 'http-status-codes';
-import { useContext, useState, useEffect } from 'react';
-import path from 'path-browserify';
-import { useDropzone } from 'react-dropzone';
-import { SkynetContext } from '../state/SkynetContext';
+import bytes from "bytes";
+import { getReasonPhrase, StatusCodes } from "http-status-codes";
+import { useContext, useState, useEffect } from "react";
+import path from "path-browserify";
+import { useDropzone } from "react-dropzone";
+import { SkynetContext } from "../state/SkynetContext";
 
-import { Container, Header, Icon, Progress, Segment } from 'semantic-ui-react';
+import { Container, Header, Icon, Progress, Segment } from "semantic-ui-react";
 
 const getFilePath = (file) => file.webkitRelativePath || file.path || file.name;
 
@@ -45,53 +45,53 @@ const createUploadErrorMessage = (error) => {
   // This will be triggered mostly if the server is offline or misconfigured and doesn't respond to valid request.
   if (error.request) {
     if (!navigator.onLine) {
-      return 'You are offline, please connect to the internet and try again';
+      return "You are offline, please connect to the internet and try again";
     }
 
     // TODO: We should add a note "our team has been notified" and have some kind of notification with this error.
-    return 'Server failed to respond to your request, please try again later.';
+    return "Server failed to respond to your request, please try again later.";
   }
 
   // TODO: We should add a note "our team has been notified" and have some kind of notification with this error.
   return `Critical error, please refresh the application and try again. ${error.message}`;
 };
 
-const UploadElement = ({ file, status, error, url = '', progress = 0 }) => {
+const UploadElement = ({ file, status, error, url = "", progress = 0 }) => {
   return (
     <Segment>
       <div className="flex items-center">
-        {status === 'uploading' && <Icon loading name="circle notch" />}
-        {status === 'processing' && <Icon loading name="spinner" />}
-        {status === 'complete' && <Icon name="check circle" />}
-        {status === 'error' && <Icon name="delete" />}
+        {status === "uploading" && <Icon loading name="circle notch" />}
+        {status === "processing" && <Icon loading name="spinner" />}
+        {status === "complete" && <Icon name="check circle" />}
+        {status === "error" && <Icon name="delete" />}
         <div>
           <div>{file.name}</div>
           <div>
             <div>
-              {status === 'uploading' && (
+              {status === "uploading" && (
                 <span className="tabular-nums">
                   Uploading {bytes(file.size * progress)} of {bytes(file.size)}
                 </span>
               )}
 
-              {status === 'processing' && (
+              {status === "processing" && (
                 <span className="text-palette-300">Processing...</span>
               )}
 
-              {status === 'complete' && <a href={url}>{url}</a>}
+              {status === "complete" && <a href={url}>{url}</a>}
 
-              {status === 'error' && error && (
+              {status === "error" && error && (
                 <span className="text-error">{error}</span>
               )}
             </div>
             <div>
-              {status === 'uploading' && (
+              {status === "uploading" && (
                 <span className="uppercase tabular-nums">
                   {Math.floor(progress * 100)}%
                   <span className="hidden desktop:inline"> completed</span>
                 </span>
               )}
-              {status === 'processing' && (
+              {status === "processing" && (
                 <span className="uppercase text-palette-300">Wait</span>
               )}
             </div>
@@ -100,9 +100,9 @@ const UploadElement = ({ file, status, error, url = '', progress = 0 }) => {
       </div>
 
       <Container>
-        {status !== 'processing' &&
-          status !== 'error' &&
-          status !== 'complete' && (
+        {status !== "processing" &&
+          status !== "error" &&
+          status !== "complete" && (
             <Progress size="tiny" percent={Math.floor(progress * 100)} />
           )}
       </Container>
@@ -112,11 +112,11 @@ const UploadElement = ({ file, status, error, url = '', progress = 0 }) => {
 
 const Uploader = ({ uploadMode }) => {
   const { client } = useContext(SkynetContext);
-  const [mode, setMode] = useState(uploadMode ? uploadMode : 'file');
+  const [mode, setMode] = useState(uploadMode ? uploadMode : "file");
   const [files, setFiles] = useState([]);
 
   const handleDrop = async (acceptedFiles) => {
-    if (mode === 'directory' && acceptedFiles.length) {
+    if (mode === "directory" && acceptedFiles.length) {
       const rootDir = getRootDirectory(acceptedFiles[0]); // get the file path from the first file
 
       acceptedFiles = [
@@ -125,7 +125,7 @@ const Uploader = ({ uploadMode }) => {
     }
 
     setFiles((previousFiles) => [
-      ...acceptedFiles.map((file) => ({ file, status: 'uploading' })),
+      ...acceptedFiles.map((file) => ({ file, status: "uploading" })),
       ...previousFiles,
     ]);
 
@@ -146,16 +146,16 @@ const Uploader = ({ uploadMode }) => {
 
     acceptedFiles.forEach((file) => {
       const onUploadProgress = (progress) => {
-        const status = progress === 1 ? 'processing' : 'uploading';
+        const status = progress === 1 ? "processing" : "uploading";
 
         onFileStateChange(file, { status, progress });
       };
 
       // Reject files larger than our hard limit of 1 GB with proper message
-      if (file.size > bytes('1 GB')) {
+      if (file.size > bytes("1 GB")) {
         onFileStateChange(file, {
-          status: 'error',
-          error: 'This file size exceeds the maximum allowed size of 1 GB.',
+          status: "error",
+          error: "This file size exceeds the maximum allowed size of 1 GB.",
         });
 
         return;
@@ -181,10 +181,10 @@ const Uploader = ({ uploadMode }) => {
           }
 
           const url = await client.getSkylinkUrl(response.skylink, {
-            subdomain: mode === 'directory',
+            subdomain: mode === "directory",
           });
 
-          onFileStateChange(file, { status: 'complete', url });
+          onFileStateChange(file, { status: "complete", url });
         } catch (error) {
           if (
             error.response &&
@@ -198,7 +198,7 @@ const Uploader = ({ uploadMode }) => {
           }
 
           onFileStateChange(file, {
-            status: 'error',
+            status: "error",
             error: createUploadErrorMessage(error),
           });
         }
@@ -215,9 +215,9 @@ const Uploader = ({ uploadMode }) => {
 
   useEffect(() => {
     if (!inputElement) return;
-    if (mode === 'directory')
-      inputElement.setAttribute('webkitdirectory', 'true');
-    if (mode === 'file') inputElement.removeAttribute('webkitdirectory');
+    if (mode === "directory")
+      inputElement.setAttribute("webkitdirectory", "true");
+    if (mode === "file") inputElement.removeAttribute("webkitdirectory");
   }, [inputElement, mode]);
 
   return (
@@ -228,10 +228,10 @@ const Uploader = ({ uploadMode }) => {
           <Segment stacked>
             <Header as="h3">
               <Icon name="add" size="large" />
-              {mode === 'file' &&
-                'Add or drop your files here to pin to Skynet'}
-              {mode === 'directory' &&
-                'Add or drop your build folder here to deploy to Skynet'}
+              {mode === "file" &&
+                "Add or drop your files here to pin to Skynet"}
+              {mode === "directory" &&
+                "Add or drop your build folder here to deploy to Skynet"}
             </Header>
           </Segment>
         </Container>

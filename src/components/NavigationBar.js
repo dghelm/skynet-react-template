@@ -1,7 +1,7 @@
-import { Container, Menu, Icon, Rail } from 'semantic-ui-react';
-import { NavLink, useLocation } from 'react-router-dom';
-import MySkyButton from './MySkyButton';
-import MessageDisplay from './MessageDisplay';
+import { Container, Menu, Icon, Rail } from "semantic-ui-react";
+import { NavLink, useLocation } from "react-router-dom";
+import MySkyButton from "./MySkyButton";
+import MessageDisplay from "./MessageDisplay";
 
 const NavMenuItem = ({ title, route, currentRoute }) => {
   const active = currentRoute === `/${route}`;

@@ -1,16 +1,16 @@
-import { createContext, useState, useEffect } from 'react';
-import { SkynetClient } from 'skynet-js';
+import { createContext, useState, useEffect } from "react";
+import { SkynetClient } from "skynet-js";
 
 // To import DAC, uncomment here, and 2 spots below.
 // import { ContentRecordDAC } from '@skynetlabs/content-record-library';
-import { UserProfileDAC } from '@skynethub/userprofile-library';
+import { UserProfileDAC } from "@skynethub/userprofile-library";
 
 const SkynetContext = createContext(undefined);
 
 // We'll define a portal to allow for developing on localhost.
 // When hosted on a skynet portal, SkynetClient doesn't need any arguments.
 const portal =
-  window.location.hostname === 'localhost' ? 'https://siasky.net' : undefined;
+  window.location.hostname === "localhost" ? "https://siasky.net" : undefined;
 
 // Initiate the SkynetClient
 const client = new SkynetClient(portal);
@@ -21,7 +21,7 @@ const contentRecord = null;
 const userProfile = new UserProfileDAC();
 
 const dataDomain =
-  window.location.hostname === 'localhost' ? 'localhost' : 'appName.hns';
+  window.location.hostname === "localhost" ? "localhost" : "appName.hns";
 
 const SkynetProvider = ({ children }) => {
   const [skynetState, setSkynetState] = useState({

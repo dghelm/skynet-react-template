@@ -1,10 +1,10 @@
-import { action, thunk, thunkOn, computed } from 'easy-peasy';
-import _ from 'underscore';
+import { action, thunk, thunkOn, computed } from "easy-peasy";
+import _ from "underscore";
 
 export const uiModel = {
   error: null,
   messages: [
-    { message: 'hello', negative: false, dismissed: false, id: 'fake' },
+    { message: "hello", negative: false, dismissed: false, id: "fake" },
   ],
 
   setError: action((state, { message }) => {

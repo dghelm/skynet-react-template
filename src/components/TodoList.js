@@ -1,5 +1,5 @@
-import { Checkbox, List, Button, Loader } from 'semantic-ui-react';
-import { useStoreState, useStoreActions } from 'easy-peasy';
+import { Checkbox, List, Button, Loader } from "semantic-ui-react";
+import { useStoreState, useStoreActions } from "easy-peasy";
 
 const TodoList = () => {
   const todoItems = useStoreState((state) => state.todos.todoItems);

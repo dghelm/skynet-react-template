@@ -1,10 +1,10 @@
-import { Input, Button } from 'semantic-ui-react';
-import { useState } from 'react';
-import { useStoreActions } from 'easy-peasy';
+import { Input, Button } from "semantic-ui-react";
+import { useState } from "react";
+import { useStoreActions } from "easy-peasy";
 
 function TodoForm() {
   const addTodo = useStoreActions((actions) => actions.todos.addTodo);
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
   return (
     <>
       <Input
@@ -14,7 +14,7 @@ function TodoForm() {
       />
       <Button
         onClick={() => addTodo({ text: value, done: false })}
-        style={{ marginLeft: '10px' }}
+        style={{ marginLeft: "10px" }}
       >
         Add Todo
       </Button>

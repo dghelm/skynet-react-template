@@ -1,5 +1,5 @@
-import { NavLink } from 'react-router-dom';
-import { Header, Container, Button, Icon, Segment } from 'semantic-ui-react';
+import { NavLink } from "react-router-dom";
+import { Header, Container, Button, Icon, Segment } from "semantic-ui-react";
 
 const HomepageHeading = ({ mobile }) => (
   <Container text>
@@ -8,10 +8,10 @@ const HomepageHeading = ({ mobile }) => (
       content="Imagine a Template"
       inverted
       style={{
-        fontSize: mobile ? '2em' : '4em',
-        fontWeight: 'normal',
+        fontSize: mobile ? "2em" : "4em",
+        fontWeight: "normal",
         marginBottom: 0,
-        marginTop: mobile ? '1.5em' : '3em',
+        marginTop: mobile ? "1.5em" : "3em",
       }}
     />
     <Header
@@ -19,10 +19,10 @@ const HomepageHeading = ({ mobile }) => (
       content="That solved your todo list needs."
       inverted
       style={{
-        fontSize: mobile ? '1.5em' : '1.7em',
-        fontWeight: 'normal',
-        marginTop: mobile ? '0.5em' : '1.5em',
-        marginBottom: mobile ? '0.5em' : '1.5em',
+        fontSize: mobile ? "1.5em" : "1.7em",
+        fontWeight: "normal",
+        marginTop: mobile ? "0.5em" : "1.5em",
+        marginBottom: mobile ? "0.5em" : "1.5em",
       }}
     />
     <Button color="green" size="huge" as={NavLink} to="todo">
@@ -38,7 +38,7 @@ const Home = () => {
       inverted
       color="grey"
       textAlign="center"
-      style={{ minHeight: 700, padding: '1em 0em' }}
+      style={{ minHeight: 700, padding: "1em 0em" }}
       vertical
     >
       <HomepageHeading />

@@ -1,4 +1,4 @@
-import { action, thunkOn } from 'easy-peasy';
+import { action, thunkOn } from "easy-peasy";
 
 export const todoModel = {
   // Todo State
@@ -35,11 +35,11 @@ export const todoModel = {
       if (target.payload.userID) {
         actions.setLoading({ isLoading: true });
         const mySky = target.payload.mySky;
-        const { data } = await mySky.getJSON('localhost/todos');
+        const { data } = await mySky.getJSON("localhost/todos");
         if (data) {
           actions.loadTodos({ todos: data.todos });
         } else {
-          await mySky.setJSON('localhost/todos', { todos: [] });
+          await mySky.setJSON("localhost/todos", { todos: [] });
         }
         actions.setLoading({ isLoading: false });
       }

@@ -1,7 +1,7 @@
-import { useEffect, useContext, useState } from 'react';
-import { Button, Icon, Loader } from 'semantic-ui-react';
-import { useStoreState, useStoreActions, useStore } from 'easy-peasy';
-import { SkynetContext } from '../state/SkynetContext';
+import { useEffect, useContext, useState } from "react";
+import { Button, Icon, Loader } from "semantic-ui-react";
+import { useStoreState, useStoreActions, useStore } from "easy-peasy";
+import { SkynetContext } from "../state/SkynetContext";
 
 const MySkyButton = () => {
   const { mySky } = useContext(SkynetContext);

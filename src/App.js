@@ -1,6 +1,6 @@
-import { Container, Header, Rail } from 'semantic-ui-react';
-import NavigationBar from './components/NavigationBar';
-import MessageDisplay from './components/MessageDisplay';
+import { Container, Header, Rail } from "semantic-ui-react";
+import NavigationBar from "./components/NavigationBar";
+import MessageDisplay from "./components/MessageDisplay";
 import {
   Home,
   Todo,
@@ -9,11 +9,11 @@ import {
   RecentlyPlayed,
   Deploy,
   Profile,
-} from './pages';
-import { HashRouter as Router, Switch, Route } from 'react-router-dom';
-import { SkynetProvider } from './state/SkynetContext';
-import { StoreProvider } from 'easy-peasy';
-import { store } from './state/store';
+} from "./pages";
+import { HashRouter as Router, Switch, Route } from "react-router-dom";
+import { SkynetProvider } from "./state/SkynetContext";
+import { StoreProvider } from "easy-peasy";
+import { store } from "./state/store";
 
 const App = () => {
   return (
