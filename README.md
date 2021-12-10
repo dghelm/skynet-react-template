@@ -1,14 +1,17 @@
-https://semantic-ui.com/usage/theming.html
+
 
 # Skynet Typescript React Template
 
+<p align="center">
+<a href="#badge">
+    <img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square"></a>
+</p>
 
 - :heavy_check_mark: Uses [Parcel](https://github.com/parcel-bundler/parcel) for bundling
 - :heavy_check_mark: [Semantic UI](https://react.semantic-ui.com/), custom styling overrides under `/src/semantic-ui` using [Theming](https://semantic-ui.com/usage/theming.html)
 - :heavy_check_mark: [Prettier](https://prettier.io/docs/en/index.html) for linting and editing
 - :heavy_check_mark: [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) using [Semantic-Release](https://github.com/semantic-release/semantic-release). Commit Messages are linted using [Husky](https://www.npmjs.com/package/husky) (setup `npx husky install`)
 - :heavy_check_mark: Testing with [Jest](https://jestjs.io/docs/tutorial-react). Examples in `/src/components/test`. Tests can be run using `yarn test`
-
 
 ## Getting Started
 
@@ -17,10 +20,10 @@ To use this as a template for your projects use the following commands (replace 
 ```
 git clone [this repo will update] {YOUR_PROJECT_NAME}
 cd {YOUR_PROJECT_NAME}/
-yarn install 
+yarn install
 yarn start
-
 ```
+
 ## Available Scripts
 
 In the project directory, you can run:
