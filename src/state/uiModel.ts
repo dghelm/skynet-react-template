@@ -1,7 +1,7 @@
 import { action, thunk, Action, Thunk } from "easy-peasy";
 import _ from "underscore";
 
-interface uiMessageModel {
+export interface uiMessageModel {
   message: string;
   negative?: boolean;
   dismissed?: boolean;

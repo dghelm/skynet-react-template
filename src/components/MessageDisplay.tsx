@@ -9,16 +9,23 @@ import {
   Sticky,
   Rail,
 } from "semantic-ui-react";
-import { useStoreState, useStoreActions } from "easy-peasy";
+import { useStoreState, useStoreActions } from "../state/easy-peasy-typed";
 import { useState, useEffect } from "react";
+import { uiMessageModel } from "../state/uiModel";
 
-const MessageList = ({ messages, dismissMessage }) => {
+const MessageList = ({
+  messages,
+  dismissMessage,
+}: {
+  messages: uiMessageModel[];
+  dismissMessage: any;
+}): JSX.Element => {
   const messageItems = messages.map(({ message, negative, dismissed, id }) => {
     return (
       <div key={id}>
         <Transition animation="fade up" duration={500} visible={!dismissed}>
           <Message
-            onDismiss={(i) => dismissMessage({ id })}
+            onDismiss={() => dismissMessage({ id })}
             floating
             negative={negative}
           >
@@ -34,7 +41,7 @@ const MessageList = ({ messages, dismissMessage }) => {
 
 const MessageDisplay = () => {
   const { error, messages } = useStoreState((state) => state.ui);
-  const { resetError, dismissMessage } = useStoreActions(
+  const { dismissMessage } = useStoreActions(
     (actions) => actions.ui
   );
   const [visible, setVisible] = useState(false);
