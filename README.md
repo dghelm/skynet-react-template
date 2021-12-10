@@ -1,9 +1,10 @@
-
+https://semantic-ui.com/usage/theming.html
 # Skynet Typescript React Template
 
-## Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+- [x] Uses [Parcel](https://github.com/parcel-bundler/parcel) for bundling
+- [x] [Semantic UI](https://react.semantic-ui.com/), custom styling overrides under `/src/semantic-ui` using [Theming](https://semantic-ui.com/usage/theming.html)
+- [x] [Prettier](https://prettier.io/docs/en/index.html) for linting and editing
 
 ## Available Scripts
 
