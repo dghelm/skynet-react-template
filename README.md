@@ -5,6 +5,7 @@ https://semantic-ui.com/usage/theming.html
 - [x] Uses [Parcel](https://github.com/parcel-bundler/parcel) for bundling
 - [x] [Semantic UI](https://react.semantic-ui.com/), custom styling overrides under `/src/semantic-ui` using [Theming](https://semantic-ui.com/usage/theming.html)
 - [x] [Prettier](https://prettier.io/docs/en/index.html) for linting and editing
+- [x] [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) using [Semantic-Release](https://github.com/semantic-release/semantic-release). Commit Messages are linted using [Husky](https://www.npmjs.com/package/husky) (setup `npx husky install`)
 
 ## Available Scripts
 
