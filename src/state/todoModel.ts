@@ -1,4 +1,12 @@
-import { Action, action, Actions, Computed, Thunk, ThunkOn, thunkOn } from "easy-peasy";
+import {
+  Action,
+  action,
+  Actions,
+  Computed,
+  Thunk,
+  ThunkOn,
+  thunkOn,
+} from "easy-peasy";
 import { StoreModel } from "./store";
 
 export interface TodoModelType {
@@ -10,7 +18,7 @@ export interface TodoModelType {
   updateTodo: Action<TodoModelType, { i: number; elem: { checked: boolean } }>;
   clearTodos: Action<TodoModelType>;
   loadTodos: Action<TodoModelType, { todos: Array<any> }>;
-  onLoginChange: ThunkOn<TodoModelType, Actions<StoreModel>, StoreModel>;
+  onLoginChange: ThunkOn<TodoModelType, any, Pick<StoreModel, "mySky">>;
 }
 
 export const todoModel: TodoModelType = {
@@ -47,13 +55,23 @@ export const todoModel: TodoModelType = {
       // logging in, call loadTodos
       if (target.payload.userID) {
         actions.setLoading({ isLoading: true });
-        const mySky = target.payload.mySky;
-        const { data } = await mySky.getJSON("localhost/todos");
-        if (data) {
-          actions.loadTodos({ todos: data.todos });
-        } else {
-          await mySky.setJSON("localhost/todos", { todos: [] });
+        const mySky = target?.payload?.mySky;
+
+        if (mySky) {
+          const response = await mySky.getJSON("localhost/todos");
+          const jsonResponse = response?.data;
+          if (jsonResponse?.todos) {
+            const { todoItems }: Pick<TodoModelType, "todoItems"> = {
+              todoItems: jsonResponse?.todos as any[],
+            };
+            if (todoItems) {
+              actions.loadTodos({ todos: todoItems });
+            }
+          } else {
+            await mySky.setJSON("localhost/todos", { todos: [] });
+          }
         }
+
         actions.setLoading({ isLoading: false });
       }
     }

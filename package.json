@@ -45,7 +45,8 @@
     "check": "tsc src/**/*.{ts,tsx,js} --noEmit",
     "lint-check": "prettier --check 'src/**/*.{ts,tsx,js}'",
     "lint-fix": "prettier --write 'src/**/*.{ts,tsx,js}'",
-    "test": "jest --watch"
+    "test": "jest --watch",
+    "ci-test": "jest --ci"
   },
   "release": {
     "branches": [
@@ -87,7 +88,7 @@
     ]
   },
   "devDependencies": {
-    "@babel/core": "7",
+    "@babel/core": "^7.16.0",
     "@babel/preset-env": "^7.16.4",
     "@babel/preset-react": "^7.16.0",
     "@commitlint/cli": "^15.0.0",
@@ -97,13 +98,17 @@
     "@semantic-release/git": "^10.0.1",
     "@semantic-release/release-notes-generator": "^10.0.3",
     "@testing-library/dom": "^8.11.1",
+    "@types/bytes": "^3.1.1",
     "@types/node": "^16.11.12",
+    "@types/path-browserify": "^1.0.0",
     "@types/react": "^17.0.37",
     "@types/react-dom": "^17.0.11",
     "@types/react-router-dom": "^5.3.2",
     "@types/underscore": "^1.11.4",
+    "babel-jest": "^27.4.4",
     "babel-preset-env": "^1.7.0",
     "babel-preset-react": "^6.24.1",
+    "babel-preset-react-app": "^10.0.0",
     "husky": "^7.0.4",
     "jest": "^27.4.4",
     "jest-circus": "26.6.0",
@@ -119,8 +124,40 @@
       "<rootDir>/src"
     ],
     "collectCoverageFrom": [
-      "src/**/*.{js,jsx,ts,tsx}",
-      "!src/**/*.d.ts"
+      "src/**/*.{js,jsx}"
+    ],
+    "testMatch": [
+      "<rootDir>/src/**/__tests__/**/*.js?(x)",
+      "<rootDir>/src/**/?(*.)(spec|test).js?(x)"
+    ],
+    "testEnvironment": "node",
+    "testURL": "http://localhost",
+    "transform": {
+      "^.+\\.(js|jsx)$": "<rootDir>/node_modules/babel-jest",
+      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
+      "^(?!.*\\.(js|jsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
+    },
+    "transformIgnorePatterns": [
+      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$"
+    ],
+    "moduleNameMapper": {
+      "^react-native$": "react-native-web"
+    },
+    "moduleFileExtensions": [
+      "web.js",
+      "js",
+      "json",
+      "web.jsx",
+      "jsx",
+      "node"
     ]
+  },
+  "babel": {
+    "presets": [
+      "react-app"
+    ]
+  },
+  "eslintConfig": {
+    "extends": "react-app"
   }
 }

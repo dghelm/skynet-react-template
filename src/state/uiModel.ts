@@ -1,4 +1,4 @@
-import { action, thunk, thunkOn, computed, Action, Thunk } from "easy-peasy";
+import { action, thunk, Action, Thunk } from "easy-peasy";
 import _ from "underscore";
 
 interface uiMessageModel {
@@ -6,6 +6,7 @@ interface uiMessageModel {
   negative?: boolean;
   dismissed?: boolean;
   id?: string;
+  action?: string;
 }
 
 export interface UiModelType {
@@ -28,7 +29,7 @@ export const uiModel: UiModelType = {
     state.error = message;
   }),
 
-  resetError: action((state, payload) => {
+  resetError: action((state, _payload) => {
     state.error = null;
   }),
 
@@ -42,10 +43,10 @@ export const uiModel: UiModelType = {
   }),
 
   dismissMessage: action((state, { id }) => {
-    const notYetDismissed = _.reject(state.messages, (item) => {
+    const notYetDismissed = _.reject(state.messages, (item: { dismissed?: any; }) => {
       return item.dismissed;
     });
-    state.messages = _.reject(notYetDismissed, (item) => {
+    state.messages = _.reject(notYetDismissed, (item: { id?: string | undefined; }) => {
       return item.id == id;
     });
   }),

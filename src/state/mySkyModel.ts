@@ -13,25 +13,31 @@ import { MySky } from "skynet-js";
 import { StoreModel } from "./store";
 
 export interface MySkyModelType {
-  userID?: string;
-  mySky?: MySky;
+  userID?: string | null;
+  mySky?: MySky | null;
   loggedIn: Computed<MySkyModelType, boolean>;
   setMySky: Action<MySkyModelType, { mySky: MySky }>;
 
-  setUserID: Thunk<MySkyModelType, { userID: string; mySky?: MySky }>;
+  setUserID: Thunk<MySkyModelType, { userID: string | null; mySky?: MySky }>;
 
-  setValidUserID: Action<MySkyModelType, { userID: string }>;
+  setValidUserID: Action<MySkyModelType, { userID: string | null }>;
 
   setNullUserID: Action<MySkyModelType>;
 
-  fetchUserID: Thunk<MySkyModelType, MySkyModelType>;
+  fetchUserID: Thunk<MySkyModelType, { userID?: string | null; mySky?: MySky }>;
 
-  logout: Thunk<MySkyModelType, MySkyModelType>;
-  persistTodoState: ThunkOn<MySkyModelType, Actions<StoreModel>, StoreModel>;
+  logout: Thunk<MySkyModelType, { mySky: MySky }>;
+
+  persistTodoState: ThunkOn<
+    Pick<StoreModel, "todos">,
+    StoreModel,
+    Pick<StoreModel, "todos" | "mySky">
+  >;
+
   persistHNSEntriesState: ThunkOn<
-    MySkyModelType,
-    Actions<StoreModel>,
-    StoreModel
+    Pick<StoreModel, "hns">,
+    StoreModel,
+    Pick<StoreModel, "hns" | "mySky">
   >;
 }
 
@@ -77,11 +83,11 @@ export const mySkyModel: MySkyModelType = {
   }),
   persistTodoState: thunkOn(
     (actions, storeActions) => [
-      storeActions.todos.addTodo,
+      actions.todos.addTodo,
       storeActions.todos.updateTodo,
       storeActions.todos.deleteTodo,
     ],
-    async (actions, target, { getStoreState }) => {
+    async (_actions, _target, { getStoreState }) => {
       const todos = getStoreState().todos.todoItems;
       const mySky = getStoreState().mySky.mySky;
 
@@ -92,12 +98,12 @@ export const mySkyModel: MySkyModelType = {
     }
   ),
   persistHNSEntriesState: thunkOn(
-    (actions, storeActions) => [
+    (_actions, storeActions) => [
       storeActions.hns.addEntry,
       storeActions.hns.updateEntry,
       storeActions.hns.deleteEntry,
     ],
-    async (actions, target, { getStoreState }) => {
+    async (_actions, _target, { getStoreState }) => {
       const hnsEntries = getStoreState().hns.hnsEntries;
       const mySky = getStoreState().mySky.mySky;
 
