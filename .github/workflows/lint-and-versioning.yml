@@ -1,4 +1,4 @@
-name: Testing and Versioning 
+name: Build, Lint-Check, Test, and Version 
 
 on:
   push:

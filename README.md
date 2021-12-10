@@ -3,7 +3,9 @@
 # Skynet Typescript React Template
 
 <p align="center">
-[![Build](https://github.com/KavinJey/skynet-typescript-react-template/actions/workflows/lint-and-versioning.yml/badge.svg?branch=main)](https://github.com/KavinJey/skynet-typescript-react-template/actions/workflows/lint-and-versioning.yml)
+<a href="https://github.com/KavinJey/skynet-typescript-react-template/actions/workflows/lint-and-versioning.yml">
+    <img alt="code style: build" src="https://github.com/KavinJey/skynet-typescript-react-template/actions/workflows/lint-and-versioning.yml/badge.svg?branch=main">
+</a>
 <a href="#badge">
     <img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square"></a>
 </p>
