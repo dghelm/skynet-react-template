@@ -641,6 +641,6 @@ var e1, t1, n1, i1, a1 = function(e, t) {
     }, "complete" === document.readyState ? setTimeout(t4, 0) : addEventListener("pageshow", t4);
 };
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}]},["e6xvK"], null, "parcelRequire00c8")
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"ciiiV"}]},["e6xvK"], null, "parcelRequire128f")
 
 //# sourceMappingURL=web-vitals.1c437fcb.js.map

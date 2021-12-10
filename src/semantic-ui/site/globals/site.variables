@@ -1,3 +1,14 @@
 /*******************************
      User Global Variables
 *******************************/
+@primaryColor: #d709f3;
+@pageBackground: #413d5c;
+
+@pink: #d709f3;
+
+@fontName          : 'Lato';
+@fontSmoothing     : antialiased;
+
+
+@headerFont        : 'Fredoka One', cursive;
+@pageFont          : @fontName, 'Lato', sans-serif;

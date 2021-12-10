@@ -8,10 +8,15 @@
     <img alt="code style: prettier" src="https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square"></a>
 </p>
 
-- :heavy_check_mark: Uses [Parcel](https://github.com/parcel-bundler/parcel) for bundling
+- :heavy_check_mark: Uses [Parcel](https://github.com/parcel-bundler/parcel) for bundling.
+
+- :heavy_check_mark: [Easy Peasy](https://easy-peasy.vercel.app/) for State Management, and React Context* (read below for clarity)
+
 - :heavy_check_mark: [Semantic UI](https://react.semantic-ui.com/), custom styling overrides under `/src/semantic-ui` using [Theming](https://semantic-ui.com/usage/theming.html)
-- :heavy_check_mark: [Prettier](https://prettier.io/docs/en/index.html) for linting and editing
-- :heavy_check_mark: [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) using [Semantic-Release](https://github.com/semantic-release/semantic-release). Commit Messages are linted using [Husky](https://www.npmjs.com/package/husky) (setup `npx husky install`).
+
+- :heavy_check_mark: Commit Messages are linted using [Husky](https://www.npmjs.com/package/husky) (setup `npx husky install`).
+
+- :heavy_check_mark: [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) using [Semantic-Release](https://github.com/semantic-release/semantic-release). 
 
 - :heavy_check_mark: Testing with [Jest](https://jestjs.io/docs/tutorial-react). Examples in `/src/components/test`. Tests can be run using `yarn test`
 
