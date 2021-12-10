@@ -1,5 +1,3 @@
-
-
 # Skynet Typescript React Template
 
 <p align="center">
@@ -13,18 +11,28 @@
 - :heavy_check_mark: Uses [Parcel](https://github.com/parcel-bundler/parcel) for bundling
 - :heavy_check_mark: [Semantic UI](https://react.semantic-ui.com/), custom styling overrides under `/src/semantic-ui` using [Theming](https://semantic-ui.com/usage/theming.html)
 - :heavy_check_mark: [Prettier](https://prettier.io/docs/en/index.html) for linting and editing
-- :heavy_check_mark: [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) using [Semantic-Release](https://github.com/semantic-release/semantic-release). Commit Messages are linted using [Husky](https://www.npmjs.com/package/husky) (setup `npx husky install`)
+- :heavy_check_mark: [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) using [Semantic-Release](https://github.com/semantic-release/semantic-release). Commit Messages are linted using [Husky](https://www.npmjs.com/package/husky) (setup `npx husky install`).
+
 - :heavy_check_mark: Testing with [Jest](https://jestjs.io/docs/tutorial-react). Examples in `/src/components/test`. Tests can be run using `yarn test`
 
 ## Getting Started
 
-To use this as a template for your projects use the following commands (replace {} with your context)
+To use this as a template for your projects use the following commands
 
-```
-git clone [this repo will update] {YOUR_PROJECT_NAME}
-cd {YOUR_PROJECT_NAME}/
+```bash
+
+git clone https://github.com/KavinJey/skynet-typescript-react-template.git exampleProject
+cd exampleProject/
 yarn install
+npx husky install # Set-ups conventional commits and prettier lint checks
 yarn start
+
+# To push to new repository
+git remote remove origin
+git remote add origin [new repo link https/ssh]
+git add . # add changes
+git commit -m 'chore: initializing repo from template'
+git push
 ```
 
 ## Available Scripts
