@@ -4,10 +4,10 @@ import MySkyButton from "./MySkyButton";
 import MessageDisplay from "./MessageDisplay";
 
 type NavMenuItemType = {
-    title: string;
-    route: string;
-    currentRoute: string
-}
+  title: string;
+  route: string;
+  currentRoute: string;
+};
 
 const NavMenuItem = ({ title, route, currentRoute }: NavMenuItemType) => {
   const active = currentRoute === `/${route}`;

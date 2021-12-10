@@ -1,11 +1,4 @@
-import {
-  Action,
-  action,
-  Thunk,
-  thunk,
-  ThunkOn,
-  thunkOn,
-} from "easy-peasy";
+import { Action, action, Thunk, thunk, ThunkOn, thunkOn } from "easy-peasy";
 import { parseSkylink } from "skynet-js";
 import { StoreModel } from "./store";
 
@@ -21,7 +14,12 @@ export interface HnsModelType {
   updateEntry: Action<HnsModelType, { i: number; elem: { checked: boolean } }>;
   clearEntries: Action<HnsModelType>;
   loadEntries: Action<HnsModelType, { hnsEntries: Array<any> }>;
-  createEntry: Thunk<HnsModelType,{ hnsName: string; dataLink: string}, any, Pick<StoreModel, "ui" | "mySky"> >;
+  createEntry: Thunk<
+    HnsModelType,
+    { hnsName: string; dataLink: string },
+    any,
+    Pick<StoreModel, "ui" | "mySky">
+  >;
 
   onLoginChange: ThunkOn<HnsModelType, any, Pick<StoreModel, "mySky">>;
 }
@@ -62,25 +60,25 @@ export const hnsModel: HnsModelType = {
       const { throwError } = getStoreActions().ui;
 
       if (mySky) {
-      const filteredHNS = hnsName;
+        const filteredHNS = hnsName;
 
-      // double check entry -- this should get caught by form validation
-      let filteredDataLink = parseSkylink(dataLink);
-      if (!filteredDataLink) {
-        throwError({
-          action: "createEntry",
-          message: "Unable to parse provided Skylink",
+        // double check entry -- this should get caught by form validation
+        let filteredDataLink = parseSkylink(dataLink);
+        if (!filteredDataLink) {
+          throwError({
+            action: "createEntry",
+            message: "Unable to parse provided Skylink",
+          });
+          return;
+        }
+
+        const entryLink = "v2 Skylink soon";
+
+        actions.addEntry({
+          hnsName: filteredHNS,
+          dataLink: filteredDataLink,
+          entryLink: entryLink,
         });
-        return;
-      }
-
-      const entryLink = "v2 Skylink soon";
-
-      actions.addEntry({
-        hnsName: filteredHNS,
-        dataLink: filteredDataLink,
-        entryLink: entryLink,
-      });
       }
     }
   ),

@@ -3,9 +3,9 @@ import { useStoreState } from "../state/easy-peasy-typed";
 
 const TodoList = () => {
   const todoItems = useStoreState((state) => state.todos.todoItems);
-//   const { updateTodo, deleteTodo } = useStoreActions(
-//     (actions) => actions.todos
-//   );
+  //   const { updateTodo, deleteTodo } = useStoreActions(
+  //     (actions) => actions.todos
+  //   );
 
   return (
     <List divided relaxed>
@@ -13,7 +13,7 @@ const TodoList = () => {
         <List.Item key={i}>
           <Checkbox
             onClick={(_e, _elem) => {
-            //   updateTodo({ elem, i });
+              //   updateTodo({ elem, i });
             }}
             checked={todo.done}
             label={todo.text}
@@ -25,7 +25,7 @@ const TodoList = () => {
             icon="delete"
             floated="right"
             onClick={(_e, _elem) => {
-            //   deleteTodo({ elem, i });
+              //   deleteTodo({ elem, i });
             }}
           />
         </List.Item>

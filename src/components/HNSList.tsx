@@ -3,9 +3,9 @@ import { useStoreState, useStoreActions } from "../state/easy-peasy-typed";
 
 const HNSList = () => {
   const hnsEntries = useStoreState((state) => state.hns.hnsEntries);
-//   const { updateEntry, deleteEntry } = useStoreActions(
-//     (actions) => actions.hns
-//   );
+  //   const { updateEntry, deleteEntry } = useStoreActions(
+  //     (actions) => actions.hns
+  //   );
   // https://www.namebase.io/domain-manager/content-record
   return (
     // <Table striped celled singleLine>

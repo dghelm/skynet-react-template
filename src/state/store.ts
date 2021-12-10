@@ -9,7 +9,6 @@ export interface StoreModel {
   mySky: MySkyModelType;
   todos: TodoModelType;
   hns: HnsModelType;
-
 }
 
 export const store = createStore<StoreModel>(

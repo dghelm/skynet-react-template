@@ -43,12 +43,18 @@ export const uiModel: UiModelType = {
   }),
 
   dismissMessage: action((state, { id }) => {
-    const notYetDismissed = _.reject(state.messages, (item: { dismissed?: any; }) => {
-      return item.dismissed;
-    });
-    state.messages = _.reject(notYetDismissed, (item: { id?: string | undefined; }) => {
-      return item.id == id;
-    });
+    const notYetDismissed = _.reject(
+      state.messages,
+      (item: { dismissed?: any }) => {
+        return item.dismissed;
+      }
+    );
+    state.messages = _.reject(
+      notYetDismissed,
+      (item: { id?: string | undefined }) => {
+        return item.id == id;
+      }
+    );
   }),
 
   throwError: thunk((actions, { message }) => {
