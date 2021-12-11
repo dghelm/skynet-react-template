@@ -1,7 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { Header, Container, Button, Icon, Segment } from "semantic-ui-react";
 
-const HomepageHeading = ({ mobile }: { mobile: boolean}): JSX.Element => (
+const HomepageHeading = ({ mobile }: { mobile: boolean }): JSX.Element => (
   <Container text>
     <Header
       as="h1"
