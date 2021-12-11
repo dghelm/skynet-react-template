@@ -17,15 +17,18 @@
     "noUnusedParameters": true,
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "baseUrl": ".",
+    "paths": {
+      "~*": ["./*"]
+    }
   },
   "include": [
-    "src/**/*"
+    "src"
   ],
+  
   "exclude": [
     ".git",
     "node_modules",
-    "dist",
-    "config",
   ]
 }

@@ -3,3 +3,5 @@
 *******************************/
 
 @importGoogleFonts : false;
+@primaryColor: #002f4e;
+@pageBackground: #eff0f1;
