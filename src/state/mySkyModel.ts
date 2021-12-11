@@ -83,7 +83,7 @@ export const mySkyModel: MySkyModelType = {
   }),
   persistTodoState: thunkOn(
     (actions, storeActions) => [
-      actions.todos.addTodo,
+      storeActions.todos.addTodo,
       storeActions.todos.updateTodo,
       storeActions.todos.deleteTodo,
     ],

@@ -41,9 +41,7 @@ const MessageList = ({
 
 const MessageDisplay = () => {
   const { error, messages } = useStoreState((state) => state.ui);
-  const { dismissMessage } = useStoreActions(
-    (actions) => actions.ui
-  );
+  const { dismissMessage } = useStoreActions((actions) => actions.ui);
   const [visible, setVisible] = useState(false);
   const [errorText, setErrorText] = useState("Default Error Text");
 
