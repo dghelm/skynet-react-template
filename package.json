@@ -76,12 +76,15 @@
     "start": "parcel serve ./src/index.html",
     "build": "parcel build",
     "less-gen": "parcel src/semantic-ui/semantic.less src/assets/app.css",
-    "lessc-gen": "lessc node_modules/semantic-ui-less/semantic.less src/assets/app.css --math=always --include-path='node_modules/semantic-ui-less'",
+    "lessc-gen": "lessc src/semantic-ui/semantic.less src/assets/app.css --math=always -rootpath=assets/ -ru=all --include-path=semantic-ui;node_modules/semantic-ui-less",
     "check": "tsc src/**/*.{ts,tsx,js} --noEmit",
     "lint-check": "prettier --check 'src/**/*.{ts,tsx,js}'",
     "lint-fix": "prettier --write 'src/**/*.{ts,tsx,js}'",
     "test": "jest --watch",
     "ci-test": "jest --ci"
+  },
+  "alias": {
+      "./../themes/default/assets/*": "./semantic-ui/themes/default/assets/$1"
   },
   "release": {
     "branches": [
