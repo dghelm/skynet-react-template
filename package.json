@@ -73,6 +73,7 @@
     "typescript": "^4.5.3"
   },
   "scripts": {
+    "postinstall": "husky install",
     "start": "parcel serve ./src/index.html",
     "build": "parcel build",
     "less-gen": "parcel src/semantic-ui/semantic.less src/assets/app.css",
@@ -84,7 +85,7 @@
     "ci-test": "jest --ci"
   },
   "alias": {
-      "./../themes/default/assets/*": "./semantic-ui/themes/default/assets/$1"
+    "./../themes/default/assets/*": "./semantic-ui/themes/default/assets/$1"
   },
   "release": {
     "branches": [
